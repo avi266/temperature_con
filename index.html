@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+   <style>
+    body{
+        margin: 50px;
+        padding: 50px;
+        background-color: rgb(13, 3, 22);
+    }
+    #main{
+    
+           text-align: center;
+           height: 60vh;
+           border: 2px solid red;
+           justify-content: center;
+           background-color: yellow;
+    }
+    #main div{
+        margin-top: 15vh;
+    }
+    label{
+        font-size: 24px;
+        padding: 20px;
+    }
+    input{
+        font-size: 24px;
+    }
+    @media screen and (max-width: 600px){
+        body{
+        margin: 10px;
+        padding: 10px;
+    }
+   
+    @media screen and (max-width: 400px){
+        label{
+        font-size: 20px;
+        padding: 10px;
+    }
+    #main div{
+        margin-top: 15vh;
+    }
+    input{
+        font-size: 20px;
+    }
+    }
+    }
+   </style>
+</head>
+<body>
+    <div id="main">
+        <div>
+        <h2>Temperature converter</h2>
+       <label>Celsius</label><br><input type="number" value="0" id="cel"><br>
+       <label> Fahrenheit </label><br><input type="number" value="32" id="fah"><br>
+       <label> Kelvin </label><br><input type="number" value="273.15" id="kel"><br>
+    </div>
+    </div>
+    <script>
+       var a = document.getElementById("cel");
+       var b = document.getElementById("fah");
+       var z = document.getElementById("kel");
+       a.addEventListener("input",function(){
+       var c = this.value;
+       var f = c*1.8 +32;
+       var k = (f-32)*5/9 + 273.15;
+       if(!Number.isInteger(k)){
+        k= k.toFixed(3);
+       } 
+       z.value=k;
+    //    c.value = k;
+       if(!Number.isInteger(f)){
+        f= f.toFixed(3);
+       } b.value = f;
+    
+       });
+       b.addEventListener("input",function(){
+        var f = this.value;
+        var c = (f-32)*5/9;
+        var k = (f-32)*5/9 + 273.15;
+        if(!Number.isInteger(c)){
+            c=c.toFixed(3);
+        }
+        a.value= c;
+        if(!Number.isInteger(k)){
+            k=k.toFixed(3);
+        }
+        z.value=k;
+       });
+       z.addEventListener("input",function(){
+        var k = this.value;
+        var c = k-273.15;
+        var f = (k-273.15)*1.8 +32;
+        // b.value= f;
+        if(!Number.isInteger(c)){
+            c=c.toFixed(3);
+        }  a.value= c;
+        if(!Number.isInteger(f)){
+            f=f.toFixed(3);
+        }  b.value= f;
+       
+       });
+    </script>
+</body>
+</html>
